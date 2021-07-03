@@ -1,0 +1,14 @@
+const products = require('../products.json');
+
+const getProducts = (req, res) => {
+   console.log(req.query)
+   if(req.query.price){
+      const items = products.filter(
+         (val) => val.price >= parseInt(req.query.price)
+      )
+      return res.status(200).json(items)
+   }
+   res.status(200).json(products)
+};
+
+module.exports = getProducts;
